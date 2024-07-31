@@ -396,7 +396,7 @@ Frontend Statistics - Player visible within the UI
 - Movement – ground / swim / climb / fly & distance (typically 1 tile, fast can do 2, ridiculously fast can do 3. Maybe only a handful of spirits in the entire game)
 - Phenotype - Base & Layer codes, slightly obscured from system described here
 
-*needed?
+*needed? will start without
 
 Backend Statistics (to be honest totally unknown until implementation) - Actually employed by game logic and other hidden variables
 - Stat Level Base Rate – the base rate for stat level progression, larger means more exp needed per stat level up, calculated in a formula that takes into account current stat level and SLBR
@@ -431,7 +431,25 @@ Intro Story (totally ignorable): you’re told to go to the old shaman on the hi
 
 Banished from your home, earning your way back is your first obvious goal.
 
-Store: AND WHERE EXACTLY IS THE STORY?
+After that the 'story' is purposefully open, in line with the non-linear map (not quite open world as its tile based but...). The 'Main Story' follows one the assistance / opposition of the player to Balance / Progress, with various TBC end states achievable. (This is a good point. Can't have a new game + without having a clear end state on which to roll credits and reset time.)
+
+Instead the story, and exploration of regions, unfolds through a quests structure. No hard-coded "You have accepted this quest, here is a list of tasks to fullfill", just dialogue that implies courses of action and in game events that unfold according to wether and how much a player has met certain requirements. Each quest, if resolved 'successfully' (the meaning of which depends on the quest) will reward the player with an ingame ability, a key item or some other unlockable. Side Quests are those generally of smaller scale not related to the main factions. Faction, or main, quests are those that do.
+
+### Quests (Faction)
+- Save the Farmstead from what haunts it - a young priest of Balance assists you, and is pleased if you capture / calm the culprit rather than kill it
+- Capture XYZ Spirit(s) for Research (Assists Progress), a chain of fairly simple bounty hunter quests
+- Facility Breakout - release spirits held in Progress (often hidden) research facilities (Assists Balance).
+- Burn down Monestary X - and take its wealth for progress (Oppose Balance, Assist Progress if turned in)
+- The City of Ashes - what happens when the world is struck by a Tenbatsu. Should give player sympathy for Balance faction (as well as their initial nature good, be kind to spirits type coding)
+- The Tenbatsu of Paradise Cliffs - after a period of interaction and indications of tension, will suffer a Tenbatsu and will also serve as the player's introduction to this natural disaster. Depending on player's alignment, they can help enforce / break the cordon, help the people flee, help fight back. The secret at the heart is the planting of a Locust Egg, a terrible but "necessary" evil conspiracy at the highest levels of Balance.
+- A Settlement on the Brink - Tarleymore is full. They are at an adult population of 153, already technically 'over', and a whole generation of 21 children are going to reach majority over the next few years. Half the village has rebelled against the elders and the rule of the temple, with secretive Progress help, and now Balance are considering Extermination. Progress want you to smuggle the children, often against villager wishes, to their city for "safety". New Moon Tea 
+and enough voluntary expulsion is a diplomatic solution.
+
+### Side Quests
+- Losing a Parent - help a girl find her lost mother, and when the corpse is lain to rest to give her a proper concecrated burial. Rewards burial rites key ability needed to capture possessed cadavers
+- Fight off a Shobatsu - rewards Mana Dowsing Rods which allows player to find other shobatsu-to-be and profit off them
+- Gather ingredients for and learn the recipe of Granny Applebee's New Moon Tea - allows for pop control
+- 
 
 ### Factions:
 Two shadowy organisations vie for power: the Ordinance of the Kamui “Balance” and the Union of the People for Peace and “Progress”.
