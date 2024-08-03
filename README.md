@@ -2,12 +2,12 @@
 
 Name TBC
 
-Battle Chess meets fusing Pokemon with Dwarf Fortress levels of layered mechanics design on a unique Spirit-punk Aesthetic
-Play as a Shaman = a bell using bard necromancer spirit tamer priest
+Battle Chess meets leveless fusing Pokemon with non-linear story and world and a unique Spirit-punk Aesthetic
+Play as a Shaman = a bard necromancer spirit ranger priest
 
 ## Pitch
-Pixel RPG, capturing that gba feel (implying pixel art with 16-bit colours)
-Using shamanism capture various spirits that can be combined to grow and cultivate their powers, to fight off aggressive spirits, other shamans and the wild world of Zylen.
+Pixel RPG, capturing that gba feel (implying pixel art with 16-bit colours, will be ripping pokemon sprites as dev art as I slowly learn to pixel art / buy art myself)
+Using shamanism capture various spirits that can be combined to grow and cultivate their powers, to fight off aggressive spirits, other shamans and the wild world of Zylen (name TBC).
 
 Spirits roam the wild making it dangerous to leave the village, but Shamans are humanity’s solution. They learn the ways of the myriad spirits and capture them into Instruments, psychically charged items of weight, to store and carry spirits with them to study, train and fight alongside with, and protect what remains of humanity. 
 
@@ -50,63 +50,10 @@ Duel Battle System Demo
 
 Spirit Manager & Menu Demo
 
-Feature Pipeline
-Starter Zone Field Scene;
-•	Basic tilemap
-•	Basic map creation n loading
-•	Character, & movement, & animations
-•	Dangerzone / Safezone setup
-•	Scene Transition
-
-Basic Monster Scene;
-•	Necessary basic properties
-•	Basic “bindings” (i.e. battle chess commands / fight styles)
-
-Battle Screen;
-•	2.5D/Isometric grid with proper sprite rendering
-•	Click Move of sprites test
-•	Click kill
-•	Battle Won/Lost message
-
-Battle Screen UI;
-•	& Action Menu, Attack & Move
-•	Turn Queue, basic Stamina System
-
-Game Screen UI
-•	Basic Code, game data
-•	Spirit Management
-•	Item Management
-
-Basic Capture System
-•	Calm State check
-•	In Battle Item use, “Incense” to calm
-•	In Battle capture, “Scroll”
-
-Starter Zone Epsilon
-•	Basic designed world with interactables, one way ledges, animated tiles, houses with separate interior instances
-•	NPC’s
-•	Basic Dialogue System
-•	Basic Buy / Sell
-•	Basic Rest System
-
-Battle System Epsilon
-•	30 spirits, & sprite animations, & calm conditions
-•	First batch of moves
-•	Sprite Attach points
-
-Fusion Epsilon
-•	Fusion Place in World
-•	Fusion UI
-•	Fused Sprite Generator
-•	Dynamic Monster instancer, Move inherritor
-
-Starter Zone Gamma
-•	To a semi complete state 
-
 Character Customisation Scene
 - Clothes System
 
-Save / Load System & Main Menu Screen
+Save / Load System (real time game state serialisation vs saved states, an 'ironman' mode)
 
 ## Capture System
 Pokemon’s system is simple, tedious and boring. While there’s some exploration of the possibilities of different ball types, it’s not done well.
@@ -133,21 +80,35 @@ Game generates ritual tag list for current circumstance that spirit class refere
 Season, sun position, moon position & phase all could matter to capturing so a quick simple way for the player to see this is needed, such as “view sky” system.
 
 ## Type System
-Changing up the stale type system, and its simplistic model of purely damage resistances/weaknesses and which has to be tempered with a clunky natures system. 
+As per autobattlers Shaman’s types have synergy and anti-synergy bonuses/maluses that come into play through team composition and enemy matchup, but generally also function as design themes for the spirits. Not just artistically but mechanically, for damage profiles, moves, spawn locations, behaviours, events interaction etc. As such all spirits are dual-type or even triple / quadruple type, and the types below are a bit different to the old-school rpg types, or pure 'elemental' types a lá pokemon.
 
-Shaman’s types have synergy and anti-synergy bonuses that come into play through team composition and enemy matchup a là battlechess, but generally function as design themes for the spirits. Not just artistically but mechanically, for damage profiles, moves, spawn locations, behaviours, events interaction etc. Hard coded synergies are minimal (most arising synergies only). 
+Types fit into one of 3 (TBC) categories: Kind, Role, Facet
 
 Damage types come from moves only.
 
-### Spirit types: 
-**Auld machines**; the unnatural extravagances of the ancients, broken and corrupted remnants of more decedent times that harass the present. 
-**Extinct beings**; the powerful echoes of old life, primal ferocity rearing its head again, taking on form to physically remind the living of their legacy. 
-**Polluted natures**; aspects of nature poisoned and abused, their rebellion giving birth to foul spirits. 
-**Haunting psyches**; the daemons of humanity’s haunted psyche returning in semi corporeal form, clawing at the innocent with the sins of the passed. 
-**Possessed cadavers**; the corpses of the passed which rise again under malign force. 
-**Ancestral ghosts**; the spirits of the dead, unable to leave the earthly sphere, haunting those to whom they are bonded. 
+### Spirit Kind types: 
+- **Auld machines**; the unnatural extravagances of the ancients, broken and corrupted remnants of more decedent times that harass the present. 
+- **Extinct beings**; the powerful echoes of old life, primal ferocity rearing its head again, taking on form to physically remind the living of their legacy. 
+- **Polluted natures**; aspects of nature poisoned and abused, their rebellion giving birth to foul spirits. 
+- **Haunting psyches**; the daemons of humanity’s haunted psyche returning in semi corporeal form, clawing at the innocent with the sins of the passed. 
+- **Possessed cadavers**; the corpses of the passed which rise again under malign force. 
+- **Ancestral ghosts**; the spirits of the dead, unable to leave the earthly sphere, haunting those to whom they are bonded. 
 
-### Spirit List
+### Spirit Role types:
+- **Berserker** - all out melee offensive
+- **Slugger** - a.k.a. bruiser, mixed offensive defensive mostly melee
+- **Sniper** - long range attacker
+- **Trickster** - malus utility
+- 
+
+### Spirit Facet types
+A group-categories physical or meta-physical trait of the spirit
+- **Winged**
+- **Ghosts**
+
+## Spirit List
+Spirits so far.
+
 151 base spirits (homage)
 1.	Restless Ghost - ag ghost of a discontent ancestor
 2.	Shambling Undead - pc a spirit animating an unburied corpse

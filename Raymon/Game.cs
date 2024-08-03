@@ -47,7 +47,6 @@ public class Game
     /// <summary>
     /// Returns true if valid position, false otherwise
     /// </summary>
-    /// <param name="e"></param>
     public bool IsPosValid(Vector2 pos)
     {
         //TODO: add a collision layer and check that too
@@ -61,55 +60,65 @@ public class Game
     {
         //Update game logic
 
+        //ENGINE - tick and trigger tick-tied game updates
         Delta += AppData.Delta;
-        if (Delta > 0.25)
+        if (Delta > AppData.TickDuration)
         {
             Delta = 0;
-            Console.WriteLine("TICK");
+
             //update game engine tick
             Player.Sprite.NextFrame();
         }
 
-        //manage everything else
-        if (Player.State == EntityState.Still)
+        //move player
+        if (Input.KeysPressed(KeyboardKey.W, KeyboardKey.Up))
         {
-            if (Input.KeysPressed(KeyboardKey.W, KeyboardKey.Up))
-            {
-                Player.UpdateTargetPos(new Vector2(0, -1));
-                Player.State = EntityState.MovingBackward;
-                Player.Sprite = new Sprite(SpriteMap.PLAYER_MOVE_BACK);
-            }
-            else if (Input.KeysPressed(KeyboardKey.S, KeyboardKey.Down))
-            {
-                Player.UpdateTargetPos(new Vector2(0, 1));
-                Player.State = EntityState.MovingForward;
-                Player.Sprite = new Sprite(SpriteMap.PLAYER_MOVE_FRONT);
-            }
-            else if (Input.KeysPressed(KeyboardKey.A, KeyboardKey.Left))
-            {
-                Player.UpdateTargetPos(new Vector2(-1, 0));
-                Player.State = EntityState.MovingLeft;
-                Player.Sprite = new Sprite(SpriteMap.PLAYER_MOVE_LEFT);
-            }
-            else if (Input.KeysPressed(KeyboardKey.D, KeyboardKey.Right))
-            {
-                Player.UpdateTargetPos(new Vector2(1, 0));
-                Player.State = EntityState.MovingRight;
-                Player.Sprite = new Sprite(SpriteMap.PLAYER_MOVE_RIGHT);
-            }
-
-            if (!IsPosValid(Player.TargetPos)) Player.TargetPos = Player.Pos;
+            Debug.SetData("KeyPressed W");
+            UpdatePlayerMoveTarget(new Vector2(0, -1), EntityState.MovingBackward);
         }
-        else if (Player.State == EntityState.MovingForward ||
-            Player.State == EntityState.MovingBackward ||
-            Player.State == EntityState.MovingLeft ||
-            Player.State == EntityState.MovingRight)
+        else if (Input.KeysPressed(KeyboardKey.S, KeyboardKey.Down))
         {
-            Player.Move();
+            Debug.SetData("KeyPressed S");
+
+            UpdatePlayerMoveTarget(new Vector2(0, 1), EntityState.MovingForward);
         }
+        else if (Input.KeysPressed(KeyboardKey.A, KeyboardKey.Left))
+        {
+            Debug.SetData("KeyPressed A");
 
-        //just debug fun
-        if (!AppData.Debug) return;
+            UpdatePlayerMoveTarget(new Vector2(-1, 0), EntityState.MovingLeft);
+        }
+        else if (Input.KeysPressed(KeyboardKey.D, KeyboardKey.Right))
+        {
+            Debug.SetData("KeyPressed D");
 
+            UpdatePlayerMoveTarget(new Vector2(1, 0), EntityState.MovingRight);
+        }
+        Player.Move();
+
+        //move entities
+        //TODO: this.
+    }
+
+    /// <summary>
+    /// Moves player by moving target position by delta with given state (i.e. animation to play), if position valid
+    /// </summary>
+    /// <param name="targetDelta"></param>
+    /// <param name="newState"></param>
+    private void UpdatePlayerMoveTarget(Vector2 targetDelta, EntityState newState)
+    {
+        Player.UpdateTargetJustBefore(targetDelta);
+        if (!IsPosValid(Player.TargetPos))
+        {
+            Player.TargetPos = Player.Pos;
+
+            //first change the state to moving in that direction, then still, so its the correct direction of 'still'
+            Player.UpdateState(newState);
+            Player.UpdateState(EntityState.Still);
+        }
+        else
+        {
+            Player.UpdateState(newState);
+        }
     }
 }

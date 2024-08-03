@@ -3,19 +3,6 @@ using System.Numerics;
 
 namespace RaymonApp;
 
-public static class AppData
-{
-    public static readonly int W = 32 * 32;
-    public static readonly int H = 24 * 32;
-    public static readonly int WorldSize = 100;
-    public static readonly int FontSize = 16;
-    public static readonly int DebugFontSize = 16;
-    public static bool Debug = true;
-    public static double Delta = 0f;
-
-    public static readonly int SpriteScale = 32;
-}
-
 public enum GameState
 {
     MainMenu,
@@ -49,6 +36,8 @@ public class Program
 
             AppData.Delta = Raylib.GetFrameTime();
 
+            if (AppData.Debug) Debug.ClearData();
+
             //basic state management
             switch (GameState)
             {
@@ -73,28 +62,15 @@ public class Program
             //debug data
             if (AppData.Debug)
             {
-                List<string> debugData = new() { 
-                    "FPS: " + Raylib.GetFPS().ToString(), 
-                    "TargetPos: " + _game.Player.TargetPos,
-                    "Player State: " + _game.Player.State
-                };
-                DrawDebug(debugData);
+                Debug.SetData("FPS: " + Raylib.GetFPS().ToString());
+                Debug.SetData("TargetPos: " + _game.Player.TargetPos);
+                Debug.SetData("Player State: " + _game.Player.State);
+                Debug.Draw();
             }
 
             Raylib.EndDrawing();
         }
 
         Raylib.CloseWindow();
-    }
-
-    private static void DrawDebug(List<string> debugData)
-    {
-        int debugWidth = debugData.Select(str => Raylib.MeasureText(str, AppData.DebugFontSize)).Max();
-        Raylib.DrawRectangle(0, 0, debugWidth, AppData.DebugFontSize * (debugData.Count + 1), Color.Black);
-        Raylib.DrawText("Debug:", 0, 0, AppData.DebugFontSize, Color.White);
-        for (int i = 0; i < debugData.Count; i++)
-        {
-            Raylib.DrawText(debugData[i], 0, AppData.DebugFontSize * (i + 1), AppData.DebugFontSize, Color.White);
-        }
     }
 }
