@@ -38,14 +38,13 @@ public class Game
         }
 
         //Add player
-        Player.Pos = new Vector2(10, 10);
-        Player.TargetPos = new Vector2(10, 10);
-        Player.Sprite = new Sprite(SpriteMap.PLAYER_FRONT_0);
-        Player.Col = Color.White;
+        var playerPos = new Vector2(10, 10);
+        var playerSprite = new Sprite(SpriteMap.PLAYER_FRONT_0);
+        Player = new Entity(playerPos, playerSprite);
     }
 
     /// <summary>
-    /// Returns true if valid position, false otherwise
+    /// Returns true if valid position, false otherwise. TODO: this is something that should belong to either the entity manager or the world
     /// </summary>
     public bool IsPosValid(Vector2 pos)
     {
@@ -70,55 +69,52 @@ public class Game
             Player.Sprite.NextFrame();
         }
 
-        //move player
+        //input on player
         if (Input.KeysPressed(KeyboardKey.W, KeyboardKey.Up))
         {
             Debug.SetData("KeyPressed W");
-            UpdatePlayerMoveTarget(new Vector2(0, -1), EntityState.MovingBackward);
+            Player.UpdateTargetPos(new Vector2(0, -1));
         }
         else if (Input.KeysPressed(KeyboardKey.S, KeyboardKey.Down))
         {
             Debug.SetData("KeyPressed S");
-
-            UpdatePlayerMoveTarget(new Vector2(0, 1), EntityState.MovingForward);
+            Player.UpdateTargetPos(new Vector2(0, 1));
         }
         else if (Input.KeysPressed(KeyboardKey.A, KeyboardKey.Left))
         {
             Debug.SetData("KeyPressed A");
-
-            UpdatePlayerMoveTarget(new Vector2(-1, 0), EntityState.MovingLeft);
+            Player.UpdateTargetPos(new Vector2(-1, 0));
         }
         else if (Input.KeysPressed(KeyboardKey.D, KeyboardKey.Right))
         {
             Debug.SetData("KeyPressed D");
-
-            UpdatePlayerMoveTarget(new Vector2(1, 0), EntityState.MovingRight);
+            Player.UpdateTargetPos(new Vector2(1, 0));
         }
-        Player.Move();
+        
+        Player.Update();
 
         //move entities
         //TODO: this.
     }
 
-    /// <summary>
-    /// Moves player by moving target position by delta with given state (i.e. animation to play), if position valid
-    /// </summary>
-    /// <param name="targetDelta"></param>
-    /// <param name="newState"></param>
-    private void UpdatePlayerMoveTarget(Vector2 targetDelta, EntityState newState)
-    {
-        Player.UpdateTargetJustBefore(targetDelta);
-        if (!IsPosValid(Player.TargetPos))
-        {
-            Player.TargetPos = Player.Pos;
+    ///// <summary>
+    ///// Moves player by moving target position by delta with given state (i.e. animation to play), if position valid
+    ///// </summary>
+    //private void UpdatePlayerMoveTarget(Vector2 targetDelta, EntityState newState)
+    //{
+    //    Player.UpdateTargetPos(targetDelta);
+    //    if (!IsPosValid(Player._targetPos))
+    //    {
+    //        Player._targetPos = Player._pos;
 
-            //first change the state to moving in that direction, then still, so its the correct direction of 'still'
-            Player.UpdateState(newState);
-            Player.UpdateState(EntityState.Still);
-        }
-        else
-        {
-            Player.UpdateState(newState);
-        }
-    }
+    //        //TODO: this is dumb, do this better
+    //        //first change the state to moving in that direction, then still, so its the correct direction of 'still'
+    //        Player.UpdateState(newState);
+    //        Player.UpdateState(EntityState.Still);
+    //    }
+    //    else
+    //    {
+    //        Player.UpdateState(newState);
+    //    }
+    //}
 }

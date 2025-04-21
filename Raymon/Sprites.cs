@@ -14,25 +14,25 @@ public static class SpriteMap
     public static readonly Vector2 PLAYER_FRONT_1 = new Vector2(0, 1);
     public static readonly Vector2 PLAYER_FRONT_2 = new Vector2(0, 2);
     public static readonly Vector2 PLAYER_FRONT_3 = new Vector2(0, 3);
-    public static readonly List<Vector2> PLAYER_MOVE_FRONT = new List<Vector2>() { PLAYER_FRONT_0, PLAYER_FRONT_1, PLAYER_FRONT_2, PLAYER_FRONT_3 };
+    public static readonly List<Vector2> PLAYER_MOVE_FRONT = new List<Vector2>() { PLAYER_FRONT_0, PLAYER_FRONT_1, PLAYER_FRONT_0, PLAYER_FRONT_2 };
 
     public static readonly Vector2 PLAYER_BACK_0 = new Vector2(1, 0);
     public static readonly Vector2 PLAYER_BACK_1 = new Vector2(1, 1);
     public static readonly Vector2 PLAYER_BACK_2 = new Vector2(1, 2);
     public static readonly Vector2 PLAYER_BACK_3 = new Vector2(1, 3);
-    public static readonly List<Vector2> PLAYER_MOVE_BACK = new List<Vector2>() { PLAYER_BACK_0, PLAYER_BACK_1, PLAYER_BACK_2, PLAYER_BACK_3 };
+    public static readonly List<Vector2> PLAYER_MOVE_BACK = new List<Vector2>() { PLAYER_BACK_0, PLAYER_BACK_1, PLAYER_BACK_0, PLAYER_BACK_2 };
 
     public static readonly Vector2 PLAYER_LEFT_0 = new Vector2(2, 0);
     public static readonly Vector2 PLAYER_LEFT_1 = new Vector2(2, 1);
     public static readonly Vector2 PLAYER_LEFT_2 = new Vector2(2, 2);
     public static readonly Vector2 PLAYER_LEFT_3 = new Vector2(2, 3);
-    public static readonly List<Vector2> PLAYER_MOVE_LEFT = new List<Vector2>() { PLAYER_LEFT_0, PLAYER_LEFT_1, PLAYER_LEFT_2, PLAYER_LEFT_3 };
+    public static readonly List<Vector2> PLAYER_MOVE_LEFT = new List<Vector2>() { PLAYER_LEFT_0, PLAYER_LEFT_1, PLAYER_LEFT_0, PLAYER_LEFT_2 };
 
     public static readonly Vector2 PLAYER_RIGHT_0 = new Vector2(3, 0);
     public static readonly Vector2 PLAYER_RIGHT_1 = new Vector2(3, 1);
     public static readonly Vector2 PLAYER_RIGHT_2 = new Vector2(3, 2);
     public static readonly Vector2 PLAYER_RIGHT_3 = new Vector2(3, 3);
-    public static readonly List<Vector2> PLAYER_MOVE_RIGHT = new List<Vector2>() { PLAYER_RIGHT_1, PLAYER_RIGHT_0, PLAYER_RIGHT_2, PLAYER_RIGHT_0 };
+    public static readonly List<Vector2> PLAYER_MOVE_RIGHT = new List<Vector2>() { PLAYER_RIGHT_0, PLAYER_RIGHT_1, PLAYER_RIGHT_0, PLAYER_RIGHT_2 };
 }
 
 /// <summary>

@@ -2,6 +2,9 @@
 
 namespace RaymonApp;
 
+/// <summary>
+/// Wrapper for Raylib methods & associated input utilities
+/// </summary>
 public static class Input
 {
     public static bool KeyPressed(KeyboardKey key)

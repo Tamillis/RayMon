@@ -51,7 +51,7 @@ public class Program
                     Raylib.ClearBackground(Color.SkyBlue);
 
                     _game.Update();
-                    _render.SetCamTarget(_game.Player.Pos);
+                    _render.SetCamTarget(_game.Player.GetPos());
                     _render.DrawTiles(_game.Tiles);
                     _render.DrawPlayer(_game.Player);
                     break;
@@ -63,8 +63,6 @@ public class Program
             if (AppData.Debug)
             {
                 Debug.SetData("FPS: " + Raylib.GetFPS().ToString());
-                Debug.SetData("TargetPos: " + _game.Player.TargetPos);
-                Debug.SetData("Player State: " + _game.Player.State);
                 Debug.Draw();
             }
 

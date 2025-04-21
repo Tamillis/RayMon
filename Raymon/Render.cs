@@ -49,7 +49,7 @@ public class Render
 
     public void DrawPlayer(Entity player)
     {
-        Vector2 screenPos = GetScreenPos(player.Pos);
+        Vector2 screenPos = GetScreenPos(player.GetPos());
 
         DrawSprite(screenPos, player.Sprite.Coord, _playerSpriteSheet, player.Col);
         
