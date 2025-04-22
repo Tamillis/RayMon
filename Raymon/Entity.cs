@@ -90,15 +90,15 @@ public class Entity
 
     public void UpdateTargetPos(Vector2 targetDelta)
     {
-        if (!AtTarget()) return;
+        if (State != EntityState.Still) return;
 
         _targetPos = new Vector2((float)Math.Round(_pos.X + targetDelta.X), (float)Math.Round(_pos.Y + targetDelta.Y));
 
         //derive state by target pos diff
-        if (_targetPos.X - _pos.X == 1) UpdateState(EntityState.MovingRight);
-        else if (_targetPos.X - _pos.X == -1) UpdateState(EntityState.MovingLeft);
-        else if (_targetPos.Y - _pos.Y == 1) UpdateState(EntityState.MovingForward);
-        else if (_targetPos.Y - _pos.Y == -1) UpdateState(EntityState.MovingBackward);
+        if (_targetPos.X > _pos.X) UpdateState(EntityState.MovingRight);
+        else if (_targetPos.X < _pos.X) UpdateState(EntityState.MovingLeft);
+        else if (_targetPos.Y > _pos.Y) UpdateState(EntityState.MovingForward);
+        else if (_targetPos.Y < _pos.Y) UpdateState(EntityState.MovingBackward);
         else Debug.SetData("You fucked up the target pos: " + _targetPos);
     }
 
