@@ -88,6 +88,18 @@ public class Entity
         }
     }
 
+    public void Face(Vector2 direction)
+    {
+        //derive state by direction
+        if (State == EntityState.Still)
+        {
+            if (direction.X > 0) Sprite = new Sprite(SpriteMap.PLAYER_RIGHT_0);
+            else if (direction.X < 0) Sprite = new Sprite(SpriteMap.PLAYER_LEFT_0);
+            else if (direction.Y > 0) Sprite = new Sprite(SpriteMap.PLAYER_FRONT_0);
+            else if (direction.Y < 0) Sprite = new Sprite(SpriteMap.PLAYER_BACK_0);
+        }
+    }
+
     public void UpdateTargetPos(Vector2 targetDelta)
     {
         if (State != EntityState.Still) return;

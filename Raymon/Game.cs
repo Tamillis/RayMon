@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Xml.Linq;
 using Raylib_cs;
 
 namespace RaymonApp;
@@ -39,36 +38,41 @@ public class Game
         }
 
         //input on player
-        Vector2 direction = Vector2.Zero;
-        if (Input.KeysPressed(KeyboardKey.W, KeyboardKey.Up))
+        if (Input.MoveKeysPressed())
         {
-            Debug.SetData("KeyPressed W");
-            direction = new Vector2(0, -1);
-        }
-        else if (Input.KeysPressed(KeyboardKey.S, KeyboardKey.Down))
-        {
-            Debug.SetData("KeyPressed S");
-            direction = new Vector2(0, 1);
-        }
-        else if (Input.KeysPressed(KeyboardKey.A, KeyboardKey.Left))
-        {
-            Debug.SetData("KeyPressed A");
-            direction = new Vector2(-1, 0);
-        }
-        else if (Input.KeysPressed(KeyboardKey.D, KeyboardKey.Right))
-        {
-            Debug.SetData("KeyPressed D");
-            direction = new Vector2(1, 0);
-        }
-        Debug.SetData("Direction: " + direction);
+            Vector2 direction = Vector2.Zero;
+            if (Input.KeysPressed(KeyboardKey.W, KeyboardKey.Up))
+            {
+                Debug.SetData("KeyPressed W");
+                direction = new Vector2(0, -1);
+            }
+            else if (Input.KeysPressed(KeyboardKey.S, KeyboardKey.Down))
+            {
+                Debug.SetData("KeyPressed S");
+                direction = new Vector2(0, 1);
+            }
+            else if (Input.KeysPressed(KeyboardKey.A, KeyboardKey.Left))
+            {
+                Debug.SetData("KeyPressed A");
+                direction = new Vector2(-1, 0);
+            }
+            else if (Input.KeysPressed(KeyboardKey.D, KeyboardKey.Right))
+            {
+                Debug.SetData("KeyPressed D");
+                direction = new Vector2(1, 0);
+            }
+            
+            Player.Face(direction);
+            Debug.SetData("Direction: " + direction);
 
-        if (!_collisionHandler.Collides(Player.GetPos() + direction))
-        {
-            Player.UpdateTargetPos(direction);
-        }
-        else
-        {
-            Debug.SetData("Player Collides");
+            if (!_collisionHandler.Collides(Player.GetPos() + direction))
+            {
+                Player.UpdateTargetPos(direction);
+            }
+            else
+            {
+                Debug.SetData("Player Collides");
+            }
         }
 
         Player.Update();
@@ -76,25 +80,4 @@ public class Game
         //move entities
         //TODO: this.
     }
-
-    ///// <summary>
-    ///// Moves player by moving target position by delta with given state (i.e. animation to play), if position valid
-    ///// </summary>
-    //private void UpdatePlayerMoveTarget(Vector2 targetDelta, EntityState newState)
-    //{
-    //    Player.UpdateTargetPos(targetDelta);
-    //    if (!IsPosValid(Player._targetPos))
-    //    {
-    //        Player._targetPos = Player._pos;
-
-    //        //TODO: this is dumb, do this better
-    //        //first change the state to moving in that direction, then still, so its the correct direction of 'still'
-    //        Player.UpdateState(newState);
-    //        Player.UpdateState(EntityState.Still);
-    //    }
-    //    else
-    //    {
-    //        Player.UpdateState(newState);
-    //    }
-    //}
 }

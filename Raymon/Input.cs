@@ -18,4 +18,20 @@ public static class Input
 
         return false;
     }
+
+    public static bool MoveKeysPressed()
+    {
+        var moveKeys = new KeyboardKey[] { 
+            KeyboardKey.W, 
+            KeyboardKey.A, 
+            KeyboardKey.S, 
+            KeyboardKey.D, 
+            KeyboardKey.Up, 
+            KeyboardKey.Down, 
+            KeyboardKey.Left, 
+            KeyboardKey.Right 
+        };
+
+        return KeysPressed(moveKeys);
+    }
 }
