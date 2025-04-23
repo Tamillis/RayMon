@@ -52,7 +52,7 @@ public class Program
 
                     _game.Update();
                     _render.SetCamTarget(_game.Player.GetPos());
-                    _render.DrawTiles(_game.Tiles);
+                    _render.DrawTiles(_game.World.Tiles);
                     _render.DrawPlayer(_game.Player);
                     break;
             }

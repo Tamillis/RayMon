@@ -142,6 +142,12 @@ public class Entity
         }
     }
 
+    public bool Collides(Vector2 loc)
+    {
+        Vector2 originalPos = new Vector2((float)Math.Round(_pos.X), (float)Math.Round(_pos.Y));
+        return loc == originalPos || loc == _targetPos;
+    }
+
     /// <summary>
     /// since movement is bound to grid, target pos is in one of the four cardinal directions only
     /// </summary>
